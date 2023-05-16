@@ -66,7 +66,7 @@
 							</button>
 						</div>
                         <div class="logo pull-left">
-							<a href="index.html"><img src="Front/images/home/logo.png" alt="" /></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('Front/images/home/logo.png') }}" alt="" /></a>
 						</div>
 						{{-- <div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">

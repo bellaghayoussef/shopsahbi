@@ -1,0 +1,14 @@
+[
+    {
+        "model-name": "color",
+        "resource-file": "colors.json"
+    },
+    {
+        "model-name": "size",
+        "resource-file": "sizes.json"
+    },
+    {
+        "model-name": "produit",
+        "resource-file": "produits.json"
+    }
+]

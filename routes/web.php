@@ -29,7 +29,8 @@ Route::get('/produit/{produit}',[ProduitsController::class, 'details'])->name('p
 Route::get('/commande',[ProduitsController::class, 'commande'])->name('produit.commande');
 
 Route::post('/addcart', function (Request $request) {
-    $url = "https://api.whatsapp.com/send?phone=21656818880&text=". urlencode(asset('commande').'?produit='.$request->porduit."&quantity=".$request->quantity."&color=".$request->color."&size=".$request->ssize);
+    $setting = App\Models\setting::latest()->first();
+    $url = "https://api.whatsapp.com/send?phone=".$setting->whatsapp."&text=". urlencode(asset('commande').'?produit='.$request->porduit."&quantity=".$request->quantity."&color=".$request->color."&size=".$request->ssize."/");
 
 return Redirect::intended($url);
 

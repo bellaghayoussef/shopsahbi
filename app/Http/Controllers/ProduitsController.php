@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\produit;
+use App\Models\color;
+use App\Models\size;
 use Illuminate\Http\Request;
 use Exception;
 
@@ -50,7 +52,7 @@ class ProduitsController extends Controller
 
            $produit=  produit::create($data);
            $produit->colors()->attach($request->color);
-           $produit->sizes()->attach($request->sizes);
+           $produit->sizes()->attach($request->size);
             return redirect()->route('produits.produit.index')
                 ->with('success_message', trans('produits.model_was_added'));
         } catch (Exception $exception) {
@@ -72,6 +74,15 @@ class ProduitsController extends Controller
         $produit = produit::with('category')->findOrFail($id);
 
         return view('produits.show', compact('produit'));
+    }
+    public function commande(Request $request)
+    {
+
+        $produit = produit::with('category')->findOrFail($request->produit);
+        $produit->color = color::findOrFail($request->color);
+        $produit->size = size::findOrFail($request->size);
+        $produit->quantity =$request->quantity ;
+        return view('front.commande', compact('produit'));
     }
 
     /**
@@ -105,8 +116,11 @@ class ProduitsController extends Controller
 
             $produit = produit::findOrFail($id);
             $produit->update($data);
-            $produit->colors()->sync($request->color);
-            $produit->sizes()->sync($request->sizes);
+            $produit->colors()->detach();
+            $produit->sizes()->detach();
+            $produit->colors()->attach($request->color);
+
+           $produit->sizes()->attach($request->size);
             return redirect()->route('produits.produit.index')
                 ->with('success_message', trans('produits.model_was_updated'));
         } catch (Exception $exception) {

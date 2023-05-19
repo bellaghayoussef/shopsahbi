@@ -43,35 +43,34 @@
                     </div>
                     <div class="col-sm-7">
                         <div class="product-information"><!--/product-information-->
+
                             <h2>{{ $produit->name }} <br> {{ $produit->name_ar }}</h2>
 
-<form action="{{ url('addcart') }}" method="POST" name="addc" >
-    {{ csrf_field() }}
-<input type="hidden" name="porduit" value="{{ $produit->id }}">
+
                             <span>
                                 <span>{{ $produit->price }} QAR</span>
                                 <label>Quantity:</label>
-                                <input type="number" value="1"  min="1" max="1000" name="quantity"/>
+                                <input type="number" value="{{ $produit->quantity }}" disabled name="quantity"/>
                             </span>
                             <span>
                             </span>
                             <span>
                                 <label>Color:</label>
-                                @foreach ( $produit->colors as $color )
 
-                                <input id="cb3{{ $color->id }}" type="radio" name="color" value="{{ $color->id }}" style="background:{{ $color->valeur }};accent-color:{{ $color->valeur }};-webkit-appearance: none;"  />
 
-                                  @endforeach
+                                <input id="cb3{{ $produit->color->id }}" checked type="radio" disabled name="color"  style="background:{{ $produit->color->valeur }};accent-color:{{ $produit->color->valeur }};-webkit-appearance: none;"  />
+
+
 
 
                             </span>
                             <span class="select-size">
                                 <label>Size:</label>
 
-                                    @foreach ( $produit->sizes as $size )
-                                    <input type="radio" name="ssize" id="{{   $size->name}}" style="    visibility: hidden;" value="{{   $size->id}}"/>
-                                    <label for="{{   $size->name}}">{{   $size->name}}</label>
-                                    @endforeach
+
+                                    <input type="radio" disabled checked name="s-size" id="{{   $produit->size->name}}" style="    visibility: hidden;" value="{{   $produit->size->id}}"/>
+                                    <label for="{{   $produit->size->name}}">{{   $produit->size->name}}</label>
+
 
 
 
@@ -80,10 +79,8 @@
                             </span>
                             <span>
 
-                                <button type="submit" class="btn btn-fefault cart">
-                                    <i class="fa fa-shopping-cart"></i>
-                                    Add to cart
-                                </button>
+
+
                             </span>
 
 

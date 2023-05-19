@@ -299,22 +299,28 @@ return [
         [
             'text' => 'categories',
             'url'  => 'admin/categories',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'colors',
-            'url'  => 'admin/colors',
-            'icon' => 'fas fa-fw fa-user',
-        ],
-        [
-            'text' => 'sizes',
-            'url'  => 'admin/sizes',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-list-ol',
         ],
         [
             'text' => 'produits',
             'url'  => 'admin/produits',
-            'icon' => 'fas fa-fw fa-user',
+            'icon' => 'fa fa-cart-plus',
+        ],
+        [
+            'text' => 'colors',
+            'url'  => 'admin/colors',
+            'icon' => 'fa fa-paint-brush',
+        ],
+        [
+            'text' => 'sizes',
+            'url'  => 'admin/sizes',
+            'icon' => 'fa fa-tag',
+        ],
+
+        [
+            'text' => 'settings',
+            'url'  => 'admin/settings',
+            'icon' => 'fa fa-cog',
         ],
 
 

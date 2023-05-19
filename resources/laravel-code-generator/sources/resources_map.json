@@ -10,5 +10,9 @@
     {
         "model-name": "produit",
         "resource-file": "produits.json"
+    },
+    {
+        "model-name": "setting",
+        "resource-file": "settings.json"
     }
 ]

@@ -5,8 +5,12 @@ use App\Http\Controllers\CategoriesController;
 use App\Http\Controllers\ColorsController;
 use App\Http\Controllers\SizesController;
 use App\Http\Controllers\ProduitsController;
+use App\Http\Controllers\SettingsController;
+use Illuminate\Http\Request;
 
-/*
+/*use Illuminate\Http\Request;
+use App\Http\Controllers\SettingsController;
+
 |--------------------------------------------------------------------------
 | Web Routes
 |--------------------------------------------------------------------------
@@ -20,6 +24,17 @@ use App\Http\Controllers\ProduitsController;
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('/produit/{produit}',[ProduitsController::class, 'details'])->name('produit.show')->where('id', '[0-9]+');
+Route::get('/commande',[ProduitsController::class, 'commande'])->name('produit.commande');
+
+Route::post('/addcart', function (Request $request) {
+    $url = "https://api.whatsapp.com/send?phone=21656818880&text=". urlencode(asset('commande').'?produit='.$request->porduit."&quantity=".$request->quantity."&color=".$request->color."&size=".$request->ssize);
+
+return Redirect::intended($url);
+
+        });
+
 
 
 Auth::routes();
@@ -107,7 +122,24 @@ Route::group([
 });
 
 
+Route::group([
+    'prefix' => 'settings',
+], function () {
+    Route::get('/', [SettingsController::class, 'index'])
+         ->name('settings.setting.index');
+    Route::get('/create', [SettingsController::class, 'create'])
+         ->name('settings.setting.create');
+    Route::get('/show/{setting}',[SettingsController::class, 'show'])
+         ->name('settings.setting.show')->where('id', '[0-9]+');
+    Route::get('/{setting}/edit',[SettingsController::class, 'edit'])
+         ->name('settings.setting.edit')->where('id', '[0-9]+');
+    Route::post('/', [SettingsController::class, 'store'])
+         ->name('settings.setting.store');
+    Route::put('setting/{setting}', [SettingsController::class, 'update'])
+         ->name('settings.setting.update')->where('id', '[0-9]+');
+    Route::delete('/setting/{setting}',[SettingsController::class, 'destroy'])
+         ->name('settings.setting.destroy')->where('id', '[0-9]+');
 });
 
-Route::get('/produit/{produit}',[ProduitsController::class, 'details'])
-         ->name('produit.show')->where('id', '[0-9]+');
+});
+

@@ -21,8 +21,15 @@ use App\Http\Controllers\SettingsController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', function (Request $request) {
+   if(!empty($request->category)){
+    $produitas = App\Models\produit::where('category_id',$request->category)->get();
+   }else{
+
+    $produitas = App\Models\produit::all();
+   }
+
+    return view('welcome',compact('produitas'));
 });
 
 Route::get('/produit/{produit}',[ProduitsController::class, 'details'])->name('produit.show')->where('id', '[0-9]+');

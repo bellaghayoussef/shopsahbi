@@ -32,7 +32,7 @@
                             @if ($key == "0")
                             <div class="item active">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
+									<h1><span>ELEGENT</span> Baby</h1>
 									<h2>{{ $slider->name }} <br>{{ $slider->name_ar }}</h2>
 
 									<a type="button" href="{{ route('produit.show',$slider->id) }}" class="btn btn-default get">Get it now</a>
@@ -44,7 +44,7 @@
                             @else
                             <div class="item">
 								<div class="col-sm-6">
-									<h1><span>E</span>-SHOPPER</h1>
+									<h1><span>ELEGENT</span> Baby</h1>
 									<h2>{{ $slider->name }} <br>{{ $slider->name_ar }}</h2>
 
 									<a type="button" href="{{ route('produit.show',$slider->id) }}" class="btn btn-default get">Get it now</a>
@@ -92,7 +92,7 @@
 							@foreach (App\Models\category::all() as $category)
                             <div class="panel panel-default">
 								<div class="panel-heading">
-									<h4 class="panel-title"><a href="#">{{  $category->name }}</a></h4>
+									<h4 class="panel-title"><a href="{{ asset('/') }}?category={{ $category->id }}">{{  $category->name }}</a></h4>
 								</div>
 							</div>
                             @endforeach
@@ -113,7 +113,7 @@
 
 
 
-                        @foreach (App\Models\produit::all() as $item)
+                        @foreach ($produitas as $item)
                         <div class="col-sm-4">
 							<div class="product-image-wrapper">
 								<div class="single-products">

@@ -82,7 +82,7 @@
 							</button>
 						</div>
                         <div class="logo pull-left">
-							<a href="{{ url('/') }}"><img src="{{ asset('Front/images/home/logo.png') }}" alt="" /></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('Front/images/home/logo.png') }}" alt="" width=" 175px" /></a>
 						</div>
 						{{-- <div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
@@ -139,7 +139,7 @@
 				<div class="row">
 					<div class="col-sm-2">
 						<div class="companyinfo">
-							<h2><span>e</span>-shopper</h2>
+							<h2><span>elegant</span> Baby</h2>
 
 						</div>
 					</div>
@@ -161,7 +161,7 @@
 		<div class="footer-bottom">
 			<div class="container">
 				<div class="row">
-					<p class="pull-left">Copyright © 2023  Inc. All rights reserved.</p>
+					<p class="pull-left">Copyright © 2023  BELLAGHA. All rights reserved.</p>
 				</div>
 			</div>
 		</div>

@@ -38,7 +38,7 @@
 									<a type="button" href="{{ route('produit.show',$slider->id) }}" class="btn btn-default get">Get it now</a>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{ asset('storage/'.$slider->photo) }}" class="girl img-responsive" alt="" />
+									<img src="{{ asset('public/'.$slider->photo) }}" class="girl img-responsive" alt="" />
 								</div>
 							</div>
                             @else
@@ -50,7 +50,7 @@
 									<a type="button" href="{{ route('produit.show',$slider->id) }}" class="btn btn-default get">Get it now</a>
 								</div>
 								<div class="col-sm-6">
-									<img src="{{ asset('storage/'.$slider->photo) }}" class="girl img-responsive" alt="" />
+									<img src="{{ asset('public/'.$slider->photo) }}" class="girl img-responsive" alt="" />
 
 								</div>
 							</div>
@@ -118,7 +118,7 @@
 							<div class="product-image-wrapper">
 								<div class="single-products">
 									<div class="productinfo text-center">
-										<img src="{{ asset('storage/'. $item->photo) }}" style="min-height: 256px;min-width: 265px;max-height: 256px;" alt="" />
+										<img src="{{ asset('public/'. $item->photo) }}" style="min-height: 256px;min-width: 265px;max-height: 256px;" alt="" />
 										<h2>{{ $item->price }} QAR</h2>
 										<p>{{ $item->name }}<br>{{ $item->name_ar }}</p>
 										<a href="{{ route('produit.show',$item->id) }}" class="btn btn-default add-to-cart"><i class="fa fa-shopping-cart"></i>Add to cart</a>

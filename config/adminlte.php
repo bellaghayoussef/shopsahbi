@@ -307,6 +307,11 @@ return [
             'icon' => 'fa fa-cart-plus',
         ],
         [
+            'text' => 'order',
+            'url'  => 'admin/ordres',
+            'icon' => 'fa fa-tag',
+        ],
+        [
             'text' => 'colors',
             'url'  => 'admin/colors',
             'icon' => 'fa fa-paint-brush',

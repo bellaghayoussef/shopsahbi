@@ -8,8 +8,8 @@ use App\Http\Controllers\ProduitsController;
 use App\Http\Controllers\SettingsController;
 use Illuminate\Http\Request;
 
-/*use Illuminate\Http\Request;
-use App\Http\Controllers\SettingsController;
+use App\Http\Controllers\OrdresController;
+/*
 
 |--------------------------------------------------------------------------
 | Web Routes
@@ -36,8 +36,16 @@ Route::get('/produit/{produit}',[ProduitsController::class, 'details'])->name('p
 Route::get('/commande',[ProduitsController::class, 'commande'])->name('produit.commande');
 
 Route::post('/addcart', function (Request $request) {
+    $order = new App\Models\ordre();
+    $order->produit_id = $request->porduit;
+    $order->quantity = $request->quantity;
+    $order->size_id = $request->ssize;
+    $order->color_id = $request->color;
+    $order->save();
     $setting = App\Models\setting::latest()->first();
-    $url = "https://api.whatsapp.com/send?phone=".$setting->whatsapp."&text=". urlencode(asset('commande').'?produit='.$request->porduit."&quantity=".$request->quantity."&color=".$request->color."&size=".$request->ssize."/");
+
+    $url = "https://api.whatsapp.com/send?phone=".$setting->whatsapp."&text=". urlencode(asset('commande').'?order='.$order->id."/");
+
 
 return Redirect::intended($url);
 
@@ -149,5 +157,51 @@ Route::group([
          ->name('settings.setting.destroy')->where('id', '[0-9]+');
 });
 
+
+
+Route::group([
+    'prefix' => 'ordres',
+], function () {
+    Route::get('/', [OrdresController::class, 'index'])
+         ->name('ordres.ordre.index');
+    Route::get('/create', [OrdresController::class, 'create'])
+         ->name('ordres.ordre.create');
+    Route::get('/show/{ordre}',[OrdresController::class, 'show'])
+         ->name('ordres.ordre.show')->where('id', '[0-9]+');
+    Route::get('/{ordre}/edit',[OrdresController::class, 'edit'])
+         ->name('ordres.ordre.edit')->where('id', '[0-9]+');
+    Route::post('/', [OrdresController::class, 'store'])
+         ->name('ordres.ordre.store');
+    Route::put('ordre/{ordre}', [OrdresController::class, 'update'])
+         ->name('ordres.ordre.update')->where('id', '[0-9]+');
+    Route::delete('/ordre/{ordre}',[OrdresController::class, 'destroy'])
+         ->name('ordres.ordre.destroy')->where('id', '[0-9]+');
 });
 
+});
+
+
+
+
+Route::get('test', function () {
+
+
+
+    \Artisan::call('cache:clear');
+    echo \Artisan::output();
+    \Artisan::call('config:clear');
+    echo \Artisan::output();
+    \Artisan::call('route:clear');
+    echo \Artisan::output();
+    \Artisan::call('route:cache');
+    echo \Artisan::output();
+    \Artisan::call('config:cache');
+    echo \Artisan::output();
+    \Artisan::call('migrate');
+
+
+    echo \Artisan::output();
+
+
+
+});

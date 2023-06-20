@@ -14,5 +14,9 @@
     {
         "model-name": "setting",
         "resource-file": "settings.json"
+    },
+    {
+        "model-name": "ordre",
+        "resource-file": "ordres.json"
     }
 ]

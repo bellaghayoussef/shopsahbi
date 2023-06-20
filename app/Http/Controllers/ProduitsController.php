@@ -3,13 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
+use App\Models\category as Category;
 use App\Models\produit;
 use App\Models\color;
 use App\Models\size;
 use Illuminate\Http\Request;
 use Exception;
-
+use App\Models\ordre;
 class ProduitsController extends Controller
 {
 
@@ -78,10 +78,11 @@ class ProduitsController extends Controller
     public function commande(Request $request)
     {
 
-        $produit = produit::with('category')->findOrFail($request->produit);
-        $produit->color = color::findOrFail($request->color);
-        $produit->size = size::findOrFail($request->size);
-        $produit->quantity =$request->quantity ;
+        $oreder = ordre::find($request->order);
+        $produit = produit::with('category')->findOrFail($oreder->produit_id);
+        $produit->color = color::findOrFail($oreder->color_id);
+        $produit->size = size::findOrFail($oreder->size_id);
+        $produit->quantity =$oreder->quantity ;
         return view('front.commande', compact('produit'));
     }
 
@@ -200,9 +201,9 @@ class ProduitsController extends Controller
         }
 
         $path = config('laravel-code-generator.files_upload_path', 'uploads');
-        $saved = $file->store('public/' . $path, config('filesystems.default'));
+        $saved = $file->store('images',['disk' => 'public_uploads']);
 
-        return substr($saved, 7);
+        return  $saved;
     }
     public function details ($id)
     {

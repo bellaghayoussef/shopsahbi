@@ -90,8 +90,10 @@
                             <div class="panel panel-default col-sm-2" style="    margin-top: 5px;
                             border: #615d5d47 solid 2px;
                             border-radius: 34px;
-                            background-color: #615d5d47;">
-								<div class="panel-heading">
+                            background-color: #615d5d47!important;
+    margin-left: 10px;
+    margin-right: 10px;">
+								<div class="panel-heading" style="   background-color: #615d5d00!important;">
 									<h4 class="panel-title"><a href="{{ asset('/') }}">Home</a></h4>
 								</div>
 							</div>
@@ -100,8 +102,10 @@
                             <div class="panel panel-default col-sm-2" style="    margin-top: 5px;
                             border: #615d5d47 solid 2px;
                             border-radius: 34px;
-                            background-color: #615d5d47;">
-								<div class="panel-heading" style="    background-color: transparen!important">
+                            background-color: #615d5d47!important;
+    margin-left: 10px;
+    margin-right: 10px;">
+								<div class="panel-heading" style="   background-color: #615d5d00!important;">
 									<h4 class="panel-title"><a href="{{ asset('/') }}?category={{ $category->id }}">{{  $category->name }}</a></h4>
 								</div>
 							</div>

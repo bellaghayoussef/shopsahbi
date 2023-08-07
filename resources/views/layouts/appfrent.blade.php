@@ -43,7 +43,7 @@
 @php
      $setting = App\Models\setting::latest()->first();
 @endphp
-<body style="    background: #fff7df;">
+<body >
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">

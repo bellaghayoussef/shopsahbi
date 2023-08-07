@@ -81,17 +81,27 @@
 	<section>
 		<div class="container">
 			<div class="row">
-				<div class="col-sm-3">
+				<div class="col-sm-12">
 					<div class="left-sidebar">
 						<h2>Category</h2>
 						<div class="panel-group category-products" id="accordian"><!--category-productsr-->
 
 
-
+                            <div class="panel panel-default col-sm-2" style="    margin-top: 5px;
+                            border: #615d5d47 solid 2px;
+                            border-radius: 34px;
+                            background-color: #615d5d47;">
+								<div class="panel-heading">
+									<h4 class="panel-title"><a href="{{ asset('/') }}">Home</a></h4>
+								</div>
+							</div>
 
 							@foreach (App\Models\category::all() as $category)
-                            <div class="panel panel-default">
-								<div class="panel-heading">
+                            <div class="panel panel-default col-sm-2" style="    margin-top: 5px;
+                            border: #615d5d47 solid 2px;
+                            border-radius: 34px;
+                            background-color: #615d5d47;">
+								<div class="panel-heading" style="    background-color: transparen!important">
 									<h4 class="panel-title"><a href="{{ asset('/') }}?category={{ $category->id }}">{{  $category->name }}</a></h4>
 								</div>
 							</div>

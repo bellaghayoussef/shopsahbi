@@ -32,13 +32,18 @@
 }
 
 
+.panel ,.panel-heading ,.left-sidebar h2:before ,h2.title:before {
+    background-color: #fff7df!important;
+}
+
+
     </style>
     @yield('css')
 </head><!--/head-->
 @php
      $setting = App\Models\setting::latest()->first();
 @endphp
-<body>
+<body style="    background: #fff7df;">
 	<header id="header"><!--header-->
 		<div class="header_top"><!--header_top-->
 			<div class="container">
@@ -82,11 +87,11 @@
 							</button>
 						</div>
                         <div class="logo pull-left">
-							<a href="{{ url('/') }}"><img src="{{ asset('Front/images/home/logo.png') }}" alt="" width=" 175px" /></a>
+							<a href="{{ url('/') }}"><img src="{{ asset('Front/images/home/logo.png') }}" alt="" width=" 175px"  style="        min-width: 370px;"/></a>
 						</div>
 						{{-- <div class="mainmenu pull-left">
 							<ul class="nav navbar-nav collapse navbar-collapse">
-								<a href="index.html"><img src="images/home/logo.png" alt="" /></a>
+								<a href="index.html"><img src="images/home/1" alt="" /></a>
 								<li class="dropdown"><a href="#">Shop<i class="fa fa-angle-down"></i></a>
                                     <ul role="menu" class="sub-menu">
                                         <li><a href="shop.html">Products</a></li>
